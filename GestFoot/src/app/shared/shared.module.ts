@@ -1,28 +1,117 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomMaterialModule } from '../custom-material/custom-material.module';
-import { MenuLateralComponent } from '../layout/menu-lateral/menu-lateral.component';
-import { MenuSuperiorComponent } from '../layout/menu-superior/menu-superior.component';
-import { HomeComponent } from '../layout/home/home.component';
-import { FooterComponent } from '../layout/footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatAutocompleteModule,
+         MatButtonModule,
+         MatButtonToggleModule,
+         MatCardModule,
+         MatCheckboxModule,
+         MatChipsModule,
+         MatDatepickerModule,
+         MatDialogModule,
+         MatExpansionModule,
+         MatGridListModule,
+         MatIconModule,
+         MatInputModule,
+         MatListModule,
+         MatMenuModule,
+         MatNativeDateModule,
+         MatPaginatorModule,
+         MatProgressBarModule,
+         MatProgressSpinnerModule,
+         MatRadioModule,
+         MatRippleModule,
+         MatSelectModule,
+         MatSidenavModule,
+         MatSliderModule,
+         MatSlideToggleModule,
+         MatSnackBarModule,
+         MatSortModule,
+         MatTableModule,
+         MatTabsModule,
+         MatToolbarModule,
+         MatTooltipModule,
+         MatStepperModule } from '@angular/material';
+import { ContentHeaderComponent } from './content-header/content-header.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
-  declarations: [
-    MenuLateralComponent,
-    MenuSuperiorComponent,
-    HomeComponent,
-    FooterComponent
-  ],
   imports: [
     CommonModule,
-    CustomMaterialModule,
+    RouterModule,
+    FlexLayoutModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatStepperModule
   ],
   exports: [
-    CustomMaterialModule,
-    MenuLateralComponent,
-    MenuSuperiorComponent,
-    HomeComponent,
-    FooterComponent
+    FlexLayoutModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatStepperModule,
+    ContentHeaderComponent,
+    BreadcrumbComponent
+  ],
+  declarations: [
+    ContentHeaderComponent,
+    BreadcrumbComponent
   ]
 })
 export class SharedModule { }

@@ -1,10 +1,16 @@
-<!-- <router-outlet></router-outlet> hauria d'anar dins del bloc de l'app central, el menu no s'ha de moure-->
-<!-- spinner -->
-<div class="main-container">
-  <app-menu-superior [themeColor]="'primary'"></app-menu-superior>
-  <mat-sidenav-container class="mat-drawer-container mat-sidenav-container mat-drawer-transition">
-    <app-menu-lateral></app-menu-lateral>
-    <app-home></app-home>
-  </mat-sidenav-container>
-  <app-footer></app-footer>
+<div id="app" class="app" [dir]="(settings.rtl) ? 'rtl' : 'ltr'"
+            [ngClass]="settings.theme"
+            [class.fixed-header]="settings.fixedHeader"
+            [class.fixed-sidenav]="settings.fixedSidenav"
+            [class.fixed-footer]="settings.fixedFooter"
+            [class.horizontal-menu]="settings.menu == 'horizontal'"
+            [class.compact]="settings.menuType == 'compact'"
+            [class.mini]="settings.menuType == 'mini'">
+    <router-outlet></router-outlet>
+
+  <!-- Spinner -->
+    <div id="app-spinner" [class.hide]="!settings.loadingSpinner">
+        <img src="assets/img/spinner.png" class="animated-logo">
+        <h4>loading...</h4>
+    </div>
 </div>
