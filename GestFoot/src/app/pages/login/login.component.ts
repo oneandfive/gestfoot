@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { AppSettings } from '../../app.settings';
 import { Settings } from '../../app.settings.model';
 import { emailValidator } from 'src/app/validators/app-validators';
+import { LoginService } from './login.service';
+
 
 @Component({
   selector: 'gestFoot-login',
@@ -20,7 +23,8 @@ export class LoginComponent {
 
   public hide =  true;
 
-  constructor(public appSettings:AppSettings, public fb: FormBuilder, public router:Router){
+  constructor(public appSettings:AppSettings, public fb: FormBuilder, public router:Router, private translate: TranslateService,
+    private loginService: LoginService){
     this.settings = this.appSettings.settings;
 
     this.createControls();
@@ -42,11 +46,15 @@ export class LoginComponent {
 
   public onSubmit(values:Object):void {
     if (this.loginForm.valid) {
-        this.router.navigate(['register']);
+      this.loginService.accedirAmbContrasenya(this.user.value, this.password.value);
     }
   }
 
   ngAfterViewInit(){
     this.settings.loadingSpinner = false;
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
   }
 }

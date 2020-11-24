@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from './login.component';
+import { LoginService } from './login.service';
 
 export const routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' }
@@ -13,12 +14,15 @@ export const routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     SharedModule
   ],
   declarations: [
     LoginComponent
+  ],
+  providers: [
+    LoginService
   ]
 })
 export class LoginModule { }

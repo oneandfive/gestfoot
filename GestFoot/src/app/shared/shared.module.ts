@@ -35,12 +35,14 @@ import { MatAutocompleteModule,
          MatStepperModule } from '@angular/material';
 import { ContentHeaderComponent } from './content-header/content-header.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     FlexLayoutModule,
+    TranslateModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -107,7 +109,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MatTooltipModule,
     MatStepperModule,
     ContentHeaderComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    TranslateModule
   ],
   declarations: [
     ContentHeaderComponent,

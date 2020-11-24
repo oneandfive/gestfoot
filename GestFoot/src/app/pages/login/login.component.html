@@ -11,7 +11,7 @@
             <div class="p-3">
                 <mat-form-field class="w-100">
                     <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">mail</mat-icon>
-                    <input matInput placeholder="Email" formControlName="user">
+                    <input matInput placeholder="{{'login.username' | translate}}" formControlName="user">
                     <mat-error *ngIf="loginForm.controls.user.errors?.required">Email is required</mat-error>
                     <mat-error *ngIf="loginForm.controls.user.hasError('invalidEmail')">Invalid email address</mat-error>
                 </mat-form-field>
@@ -25,7 +25,9 @@
                 <mat-slide-toggle formControlName="rememberMe" class="my-2">Keep me signed in</mat-slide-toggle>
                 <a mat-button routerLink="/register" class="w-100">Don't have an account? Sign up now!</a>
                 <button mat-raised-button color="primary" class="mat-elevation-z6 w-100 mt-3" type="submit">SIGN IN</button>
-            </div>
-        </form>
+              </div>
+            </form>
+            <!-- <button (click)="useLanguage('es')">es</button>
+            <button (click)="useLanguage('ca')">ca</button> -->
   </div>
 </mat-sidenav-container>
