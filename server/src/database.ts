@@ -7,6 +7,9 @@ pool.getConnection().then(
     connection => {
         pool.releaseConnection(connection);
         console.log("DB is connect");
+    },
+    error => {
+        console.log("Initialize server. Error connecting DB: ", error);
     }
 );
 
