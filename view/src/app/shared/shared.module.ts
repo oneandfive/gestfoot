@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 import { MatAutocompleteModule,
          MatButtonModule,
          MatButtonToggleModule,
@@ -35,7 +36,6 @@ import { MatAutocompleteModule,
          MatStepperModule } from '@angular/material';
 import { ContentHeaderComponent } from './content-header/content-header.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -108,13 +108,13 @@ import { TranslateModule } from '@ngx-translate/core';
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    TranslateModule,
     ContentHeaderComponent,
-    BreadcrumbComponent,
-    TranslateModule
+    BreadcrumbComponent
   ],
   declarations: [
     ContentHeaderComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
   ]
 })
 export class SharedModule { }

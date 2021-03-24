@@ -15,7 +15,10 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  public saveUsers(user: UserDTO){
-    return this.http.post(environment.serverUrl + '/api/users/hello', user);
+  public findUserLogin(user: UserDTO){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get<UserDTO>(environment.serverUrl + '/api/users/find-user-pass/' + user.email + "/" + user.password, {headers: headers});
   }
 }

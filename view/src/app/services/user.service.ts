@@ -14,7 +14,7 @@ export class UserService {
     return this.http.get(environment.serverUrl + '/api/users/hello');
   }
 
-  public saveUsers(user: UserDTO){
-    return this.http.post(environment.serverUrl + '/api/users/hello', user);
+  public register(user: UserDTO){
+    return this.http.post(environment.serverUrl + '/api/users/register', user);
   }
 }

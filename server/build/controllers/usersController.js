@@ -51,5 +51,30 @@ class UsersController {
             res.json({ text: 'Update users ' + req.params.id });
         });
     }
+    findUserPass(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let { email } = req.params;
+            const { password } = req.params;
+            email = email.toUpperCase();
+            console.log("a" + email);
+            console.log("b" + password);
+            const userDB = yield database_1.default.query('SELECT * FROM gest_user WHERE UPPER(user_email) = ?', [email]);
+            if (userDB.length > 1) {
+                res.status(404).json({ text: "Error, no pot haver-hi més d'un usuari" });
+            }
+            else if (userDB.length < 1) {
+                res.status(404).json({ text: "L'usuari no existeix" });
+            }
+            else {
+                //Check password
+                if (userDB[0].USER_PASSWORD == password) {
+                    res.json(userDB[0]);
+                }
+                else {
+                    res.status(404).json({ text: "Contrasenya incorrecta" });
+                }
+            }
+        });
+    }
 }
 exports.usersController = new UsersController();

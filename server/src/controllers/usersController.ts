@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import pool from '../database';
+import { UserDTO } from '../model/userDTO';
 
 class UsersController {
 
@@ -36,6 +37,29 @@ class UsersController {
         await pool.query('UPDATE gest_user SET ? WHERE user_id = ?', [req.body, id]);
 
         res.json({text: 'Update users ' + req.params.id});
+    }
+
+    public async findUserPass(req: Request, res: Response): Promise<void> {
+        let { email } = req.params;
+        const { password } = req.params;
+        email = email.toUpperCase();
+        console.log("a"+email);
+        console.log("b"+password);
+        const userDB = await pool.query('SELECT * FROM gest_user WHERE UPPER(user_email) = ?', [email]);
+
+        if (userDB.length > 1) {
+            res.status(404).json({text: "Error, no pot haver-hi més d'un usuari"});
+        } else if (userDB.length < 1) {
+            res.status(404).json({text: "L'usuari no existeix"});
+        } else {
+            //Check password
+            if (userDB[0].USER_PASSWORD == password) {
+                res.json(userDB[0]);
+            } else {
+                res.status(404).json({text: "Contrasenya incorrecta"});
+            }
+
+        }
     }
 
 }

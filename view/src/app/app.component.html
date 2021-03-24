@@ -7,10 +7,8 @@
             [class.compact]="settings.menuType == 'compact'"
             [class.mini]="settings.menuType == 'mini'">
     <router-outlet></router-outlet>
-
-  <!-- Spinner -->
+    <!-- Spinner -->
     <div id="app-spinner" [class.hide]="!settings.loadingSpinner">
         <img src="assets/img/spinner.png" class="animated-logo">
-        <h4>loading...</h4>
     </div>
 </div>

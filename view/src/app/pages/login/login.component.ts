@@ -7,7 +7,7 @@ import { Settings } from '../../app.settings.model';
 import { emailValidator } from 'src/app/validators/app-validators';
 import { LoginService } from './login.service';
 import { UserDTO } from 'src/app/model/userDTO';
-
+import { AlertService } from 'src/app/shared/alert/alert.service';
 
 @Component({
   selector: 'gestFoot-login',
@@ -24,20 +24,20 @@ export class LoginComponent {
 
   public hide =  true;
 
-  constructor(public appSettings:AppSettings, public fb: FormBuilder, public router:Router, private translate: TranslateService,
-    private loginService: LoginService){
+  constructor(public appSettings: AppSettings, public fb: FormBuilder, public router: Router, private translate: TranslateService,
+    private loginService: LoginService, private alertService: AlertService) {
     this.settings = this.appSettings.settings;
 
     this.createControls();
     this.createForm();
   }
 
-  private createControls():void {
+  private createControls(): void {
     this.user = new FormControl(null, Validators.compose([Validators.required, emailValidator]));
     this.password = new FormControl(null, Validators.compose([Validators.required, Validators.minLength(6)]));
   }
 
-  private createForm():void {
+  private createForm(): void {
     this.loginForm = this.fb.group({
       user: this.user,
       password: this.password,
@@ -45,16 +45,20 @@ export class LoginComponent {
     });
   }
 
-  public onSubmit(values:Object):void {
+  public onSubmit(values: Object): void {
     if (this.loginForm.valid) {
       const user: UserDTO = new UserDTO();
-      user.USER_FIRST_NAME = 'angular';
-      user.USER_LAST_NAME = 'dto';
-      user.USER_EMAIL = 'b@b.es';
-      user.USER_PASSWORD = '5612626';
-      this.loginService.saveUsers(user).subscribe(
-        res => console.log('ok'),
-        err => console.error('no ok')
+      user.email = this.loginForm.value.user;
+      user.password = this.loginForm.value.password;
+
+      this.loginService.findUserLogin(user).subscribe(
+        res => {
+          // this.router.navigate(['/register'], { skipLocationChange: true });
+          this.router.navigate(['/home']);
+        },
+        err => {
+          this.alertService.openError('Algo va mal');
+        }
       );
     }
   }
@@ -66,4 +70,5 @@ export class LoginComponent {
   useLanguage(language: string) {
     this.translate.use(language);
   }
+
 }

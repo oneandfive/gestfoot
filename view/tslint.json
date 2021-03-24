@@ -18,7 +18,7 @@
     "component-selector": [
       true,
       "element",
-      "gestFoot",
+      "app",
       "kebab-case"
     ],
     "import-blacklist": [
