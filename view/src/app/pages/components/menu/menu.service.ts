@@ -5,12 +5,14 @@ import { Location } from '@angular/common';
 import { Menu } from './menu.model';
 import { verticalMenuItems, horizontalMenuItems } from './menu';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MenuService {
 
   constructor(private location:Location,
-              private router:Router){ } 
-    
+              private router:Router){ }
+
   public getVerticalMenuItems():Array<Menu> {
     return verticalMenuItems;
   }
@@ -25,7 +27,7 @@ export class MenuService {
       let activeMenuItem = menu.filter(item => item.routerLink === routerLink);
       if(activeMenuItem[0]){
         let menuItem = activeMenuItem[0];
-        while (menuItem.parentId != 0){  
+        while (menuItem.parentId != 0){
           let parentMenuItem = menu.filter(item => item.id == menuItem.parentId)[0];
           menuItem = parentMenuItem;
           this.toggleMenuItem(menuItem.id);
@@ -35,7 +37,7 @@ export class MenuService {
 
   public toggleMenuItem(menuId){
     let menuItem = document.getElementById('menu-item-'+menuId);
-    let subMenu = document.getElementById('sub-menu-'+menuId);  
+    let subMenu = document.getElementById('sub-menu-'+menuId);
     if(subMenu){
       if(subMenu.classList.contains('show')){
         subMenu.classList.remove('show');
@@ -44,12 +46,12 @@ export class MenuService {
       else{
         subMenu.classList.add('show');
         menuItem.classList.add('expanded');
-      }      
+      }
     }
   }
 
   public closeOtherSubMenus(menu:Array<Menu>, menuId){
-    let currentMenuItem = menu.filter(item => item.id == menuId)[0]; 
+    let currentMenuItem = menu.filter(item => item.id == menuId)[0];
     if(currentMenuItem.parentId == 0 && !currentMenuItem.target){
       menu.forEach(item => {
         if(item.id != menuId){
@@ -59,8 +61,8 @@ export class MenuService {
             if(subMenu.classList.contains('show')){
               subMenu.classList.remove('show');
               menuItem.classList.remove('expanded');
-            }              
-          } 
+            }
+          }
         }
       });
     }
@@ -80,6 +82,6 @@ export class MenuService {
           }
       }
   }
-  
+
 
 }

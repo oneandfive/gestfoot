@@ -12,7 +12,9 @@ export const routes: Routes = [
 
   { path: 'login', loadChildren: './pages/login/login.module#LoginModule' },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterModule' },
-  // { path: 'home', loadChildren: './pages/home/home.module#HomeModule' },
+  { path: 'team-choose', loadChildren: './pages/team-choose/team-choose.module#TeamChooseModule' },
+  { path: 'search-team', loadChildren: './pages/search-team/search-team.module#SearchTeamModule' },
+  { path: 'create-team', loadChildren: './pages/create-team/create-team.module#CreateTeamModule' },
   { path: 'home',
     component: PagesComponent, children: [
       { path: 'home', loadChildren: './pages/home/home.module#HomeModule' },

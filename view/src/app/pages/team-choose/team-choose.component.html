@@ -1,0 +1,25 @@
+<mat-sidenav-container class="h-100">
+  <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+       <form (ngSubmit)="onSubmit(teamForm.value)" fxFlex="90" fxFlex.gt-sm="30" fxFlex.sm="60" class="mat-elevation-z6">
+          <app-content-header
+              [icon]="'people'"
+              [title]="'Team'"
+              [hideBreadcrumb]="true"
+              [hasBgImage]="true"
+              [class]="'py-4'">
+          </app-content-header>
+          <div class="p-3">
+            <mat-form-field class="w-100">
+              <mat-select placeholder="Elige tu equipo" [(ngModel)]="teamSelected" name="food">
+                <mat-option *ngFor="let team of teamOptions" [value]="team.value">
+                    {{team.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <a mat-button routerLink="/search-team" class="w-100">Busca tu equipo</a>
+            <a mat-button routerLink="/create-team" class="w-100">Dar de alta tu equipo</a>
+            <button mat-raised-button color="primary" class="mat-elevation-z6 w-100 mt-3" type="submit" [disabled]="!teamSelected">Acceder!</button>
+          </div>
+        </form>
+  </div>
+</mat-sidenav-container>

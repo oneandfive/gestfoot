@@ -1,4 +1,6 @@
-export class UserDTO {
+import { BaseDTO } from "./baseDTO";
+
+export class UserDTO extends BaseDTO{
 
   private USER_ID!: number;
   private USER_FIRST_NAME!: string;
@@ -6,12 +8,10 @@ export class UserDTO {
   private USER_EMAIL!: string;
   private USER_PASSWORD!: string;
   private USER_PHONE!: string;
-  private USER_DATE_CREATE!: Date;
-  private USER_USU_CREATE!: number;
-  private USER_DATE_MOD!: Date;
-  private USER_USU_MOD!: number;
 
-  constructor() { }
+  constructor() {
+    super();
+   }
 
   get id(): number {
     return this.USER_ID;
@@ -53,33 +53,5 @@ export class UserDTO {
   }
   set phone(value: string) {
       this.USER_PHONE = value;
-  }
-
-  get dateCreate(): Date {
-    return this.USER_DATE_CREATE;
-  }
-  set dateCreate(value: Date) {
-      this.USER_DATE_CREATE = value;
-  }
-
-  get usuCreate(): number {
-    return this.USER_USU_CREATE;
-  }
-  set usuCreate(value: number) {
-      this.USER_USU_CREATE = value;
-  }
-
-  get usuMod(): number {
-    return this.USER_USU_MOD;
-  }
-  set usuMod(value: number) {
-      this.USER_USU_MOD = value;
-  }
-
-  get dataMod(): Date {
-    return this.USER_DATE_MOD;
-  }
-  set dateMod(value: Date) {
-      this.USER_DATE_MOD = value;
   }
 }

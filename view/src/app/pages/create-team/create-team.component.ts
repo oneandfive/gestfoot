@@ -9,10 +9,10 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html'
+  selector: 'app-create-team',
+  templateUrl: './create-team.component.html'
 })
-export class RegisterComponent {
+export class CreateTeamComponent {
   public registerForm: FormGroup;
   public settings: Settings;
 

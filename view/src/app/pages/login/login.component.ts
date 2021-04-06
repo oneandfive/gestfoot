@@ -53,8 +53,7 @@ export class LoginComponent {
 
       this.loginService.findUserLogin(user).subscribe(
         res => {
-          // this.router.navigate(['/register'], { skipLocationChange: true });
-          this.router.navigate(['/home']);
+          this.router.navigate(['/team-choose']);
         },
         err => {
           this.alertService.openError('Algo va mal');

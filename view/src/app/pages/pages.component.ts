@@ -4,7 +4,7 @@ import { PerfectScrollbarDirective, PerfectScrollbarConfigInterface } from 'ngx-
 import { AppSettings } from '../app.settings';
 import { Settings } from '../app.settings.model';
 import { rotate } from '../theme/utils/app-animation';
-import { MenuService } from '../theme/components/menu/menu.service';
+import { MenuService } from './components/menu/menu.service';
 
 @Component({
   selector: 'app-pages',
